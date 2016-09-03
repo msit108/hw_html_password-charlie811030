@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery.js"></script>
+<script src="js/seedrandom.js"></script>
+<style>
+#randomTable {
+    font-family: monospace;
+    font-size: 2.0em;
+}
+</style>
+    <title>金庫亂數產生器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+   <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+   
+   
+        <h1><strong>
+<p class="text-center">請輸入金庫亂數的編號：</strong></h1></p>
+    <br />
+     
+    <p class="text-center">
+
+        <input type="text"id="txtSeed" value="1234" class="input-lg search-query" placeholder="請輸入數字亂數編號…">
+        &nbsp;
+        <input type="button" id="btnGo" value=產生亂數值GO class="btn btn-primary" data-loading-text="Loading..."></>
+
+        <!--<input type="text" class="input-lg search-query" placeholder="請輸入字母亂數編號…">
+        &nbsp;
+        <input type="button" id="btnGo" value=產生亂數值GO class="btn btn-primary" data-loading-text="Loading..."></>-->
+    
+        <div id="randomTable" class="alert-info"></div>
+        
+
+        
+   
+    </p>
+    <p class="text-center">
+
+        <input type="text" id="txtSeed" value="1234abcd" class="input-lg search-query" value="1234" placeholder="請輸入字母數字亂數編號…">
+        &nbsp;
+        <input type="button" id="Go" value=產生亂數值GO class="btn btn-primary" data-loading-text="Loading..."></>
+        <div id="randomTable" class="alert-info"></div>
+
+
+
+
+
+
+
+    </p>
+    
+   
+   
+
+   
+        
+        <script>
+
+            $("#btnGo").click(function () {
+                var result = "";
+                // 純數字:
+                var sPool = "0123456789";
+                // 數字+小寫字母: (去除 l, o)
+                // var sPool = "abcdefghijkmnpqrstuvwxyz0123456789";
+                // 數字+大小寫字母: (去除 I, O, l, o)
+                // var sPool = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
+                
+                Math.seedrandom($("#txtSeed").val()); // 設定亂數種子
+                var iRandom = 0; var ch = "?";
+                for (iRow = 1; iRow <= 10; iRow++) {
+                    var sLine = (iRow + 100).toString().substr(1, 2) + ": ";
+                    for (iCol = 1; iCol <= 10; iCol++) {
+                        iRandom = Math.floor(Math.random() * sPool.length);
+                        ch = sPool.substr(iRandom, 1);
+                        sLine += ch;
+                    }
+                    result += sLine + "<br>";
+                }
+                
+                $("#randomTable").html(result);
+            
+            });
+
+        </script>
+    <script>
+
+            $("#Go").click(function () {
+                var result = "";
+                // 純數字:
+                var sPool = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
+                // 數字+小寫字母: (去除 l, o)
+                // var sPool = "abcdefghijkmnpqrstuvwxyz0123456789";
+                // 數字+大小寫字母: (去除 I, O, l, o)
+                // var sPool = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
+
+                Math.seedrandom($("#txtSeed").val()); // 設定亂數種子
+                var iRandom = 0; var ch = "?";
+                for (iRow = 1; iRow <= 10; iRow++) {
+                    var sLine = (iRow + 100).toString().substr(1, 2) + ": ";
+                    for (iCol = 1; iCol <= 10; iCol++) {
+                        iRandom = Math.floor(Math.random() * sPool.length);
+                        ch = sPool.substr(iRandom, 1);
+                        sLine += ch;
+                    }
+                    result += sLine + "<br>";
+                }
+
+                $("#randomTable").html(result);
+
+            });
+
+    </script>
+
+    </p>
+
+
+
+</body>
+</html>
